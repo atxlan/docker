@@ -6,16 +6,10 @@ on:
       - ".github/workflows/build-unity-images.yml"
       - "images/ubuntu/**"
   workflow_dispatch:
-    inputs:
-      push:
-        description: "Push images to registry"
-        required: true
-        default: "true"
-        type: boolean
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_PREFIX: ghcr.io/atxlan/docker
+  IMAGE_PREFIX: ghcr.io/atxlan
   IMAGE_VERSION: "4"
 
 jobs:
@@ -56,7 +50,7 @@ jobs:
         with:
           context: .
           file: ./images/ubuntu/base/Dockerfile
-          push: ${{ inputs.push || false }}
+          push: true
           tags: |
             ${{ env.IMAGE_PREFIX }}/base:ubuntu-${{ steps.tag.outputs.value }}
             ${{ env.IMAGE_PREFIX }}/base:latest
@@ -97,7 +91,7 @@ jobs:
           file: ./images/ubuntu/hub/Dockerfile
           build-args: |
             baseImage=${{ env.IMAGE_PREFIX }}/base:ubuntu-${{ needs.build-base.outputs.tag }}
-          push: ${{ inputs.push || false }}
+          push: true
           tags: |
             ${{ env.IMAGE_PREFIX }}/hub:ubuntu-${{ needs.build-base.outputs.tag }}
             ${{ env.IMAGE_PREFIX }}/hub:latest
@@ -162,7 +156,7 @@ jobs:
             version=${{ matrix.unityVersion }}
             changeSet=${{ steps.changeSet.outputs.value }}
             module=${{ matrix.targetPlatform }}
-          push: ${{ inputs.push || false }}
+          push: true
           tags: |
             ${{ env.IMAGE_PREFIX }}/editor:ubuntu-${{ matrix.unityVersion }}-${{ matrix.targetPlatform }}-${{ env.IMAGE_VERSION }}
             ${{ env.IMAGE_PREFIX }}/editor:${{ matrix.unityVersion }}-${{ matrix.targetPlatform }}
@@ -189,7 +183,7 @@ jobs:
             version=${{ matrix.unityVersion }}
             changeSet=${{ steps.changeSet.outputs.value }}
             module=${{ matrix.targetPlatform }}
-          push: ${{ inputs.push || false }}
+          push: true
           tags: |
             ${{ env.IMAGE_PREFIX }}/editor:ubuntu-${{ matrix.unityVersion }}-${{ matrix.targetPlatform }}-${{ env.IMAGE_VERSION }}
             ${{ env.IMAGE_PREFIX }}/editor:${{ matrix.unityVersion }}-${{ matrix.targetPlatform }}
