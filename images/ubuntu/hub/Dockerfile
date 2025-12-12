@@ -1,6 +1,6 @@
 ARG baseImage="unityci/base"
 FROM $baseImage
-ARG hubVersion="3.7.0"
+ARG hubVersion="3.15.3"
 
 # Hub dependencies
 RUN apt-get -q update \
