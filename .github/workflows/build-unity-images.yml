@@ -54,8 +54,6 @@ jobs:
           tags: |
             ${{ env.IMAGE_PREFIX }}/base:ubuntu-${{ steps.tag.outputs.value }}
             ${{ env.IMAGE_PREFIX }}/base:latest
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
           labels: |
             org.opencontainers.image.source=${{ github.event.repository.html_url }}
             org.opencontainers.image.revision=${{ github.sha }}
@@ -95,8 +93,6 @@ jobs:
           tags: |
             ${{ env.IMAGE_PREFIX }}/hub:ubuntu-${{ needs.build-base.outputs.tag }}
             ${{ env.IMAGE_PREFIX }}/hub:latest
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
           labels: |
             org.opencontainers.image.source=${{ github.event.repository.html_url }}
             org.opencontainers.image.revision=${{ github.sha }}
@@ -160,8 +156,6 @@ jobs:
           tags: |
             ${{ env.IMAGE_PREFIX }}/editor:ubuntu-${{ matrix.unityVersion }}-${{ matrix.targetPlatform }}-${{ env.IMAGE_VERSION }}
             ${{ env.IMAGE_PREFIX }}/editor:${{ matrix.unityVersion }}-${{ matrix.targetPlatform }}
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
           labels: |
             org.opencontainers.image.source=${{ github.event.repository.html_url }}
             org.opencontainers.image.revision=${{ github.sha }}
@@ -187,8 +181,6 @@ jobs:
           tags: |
             ${{ env.IMAGE_PREFIX }}/editor:ubuntu-${{ matrix.unityVersion }}-${{ matrix.targetPlatform }}-${{ env.IMAGE_VERSION }}
             ${{ env.IMAGE_PREFIX }}/editor:${{ matrix.unityVersion }}-${{ matrix.targetPlatform }}
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
           labels: |
             org.opencontainers.image.source=${{ github.event.repository.html_url }}
             org.opencontainers.image.revision=${{ github.sha }}
