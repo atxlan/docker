@@ -43,6 +43,7 @@ RUN apt-get -q update \
  git-lfs \
  jq \
  openssh-client \
+ sudo \
  wget \
  zip \
  unzip \
