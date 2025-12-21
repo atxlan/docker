@@ -72,5 +72,9 @@ RUN /bin/echo -e 'pcm.!default {\n\
 # Support forward compatibility for unity activation
 RUN echo "576562626572264761624c65526f7578" > /etc/machine-id && mkdir -p /var/lib/dbus/ && ln -sf /etc/machine-id /var/lib/dbus/machine-id
 
+# Add andy user with matching UID/GID from host
+RUN groupadd -g 1000 andy && \
+    useradd -u 1000 -g 1000 -m -s /bin/bash andy
+
 # Used by Unity editor in "modules.json" and must not end with a slash.
 ENV UNITY_PATH="/opt/unity"
