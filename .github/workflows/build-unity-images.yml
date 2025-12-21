@@ -10,7 +10,7 @@ on:
 env:
   REGISTRY: ghcr.io
   IMAGE_PREFIX: ghcr.io/atxlan
-  IMAGE_VERSION: "4"
+  IMAGE_VERSION: "5"
 
 jobs:
   build-base:
