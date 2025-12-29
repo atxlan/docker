@@ -122,6 +122,7 @@ jobs:
       matrix:
         unityVersion:
           - 6000.3.0f1
+          - 6000.3.2f1
         targetPlatform:
           - base
           - linux-il2cpp
