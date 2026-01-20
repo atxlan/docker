@@ -10,7 +10,7 @@ on:
 env:
   REGISTRY: ghcr.io
   IMAGE_PREFIX: ghcr.io/atxlan
-  IMAGE_VERSION: "5"
+  IMAGE_VERSION: "6"
 
 jobs:
   build-base:
@@ -121,7 +121,7 @@ jobs:
       max-parallel: 3
       matrix:
         unityVersion:
-          - 6000.3.0f1
+          - 6000.3.4f1
           - 6000.3.2f1
         targetPlatform:
           - base
