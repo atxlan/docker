@@ -121,7 +121,7 @@ jobs:
       max-parallel: 3
       matrix:
         unityVersion:
-          - 6000.3.7f1
+          - 6000.3.8f1
         targetPlatform:
           - base
           - linux-il2cpp
